@@ -2,7 +2,4 @@ bin/
 obj/
 .vs/
 *.user
-
-# Herramientas locales de desarrollo, no van al repo
-# (contiene rutas absolutas del entorno y es un cache autogenerado)
 .atl/

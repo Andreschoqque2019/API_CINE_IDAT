@@ -38,7 +38,7 @@ public class ManejadorExcepciones : IExceptionHandler
                 error = "Conflicto";
                 break;
             default:
-                // ERROR QUE NO ESPERABAMOS (UN BUG) , LO GUARDAMOS EN EL LOG PA NOSOTROS
+                // POR SI HAY UN BUG , LO GUARDAMOS EN EL LOG PA NOSOTROS
                 _logger.LogError(exception, "Error no controlado");
                 estado = StatusCodes.Status500InternalServerError;
                 error = "Error interno";
@@ -54,7 +54,6 @@ public class ManejadorExcepciones : IExceptionHandler
             Mensaje = mensaje,
             Ruta = context.Request.Path
         };
-
         // LE PONEMOS EL CODIGO HTTP Y LA MANDAMOS COMO JSON
         context.Response.StatusCode = estado;
         await context.Response.WriteAsJsonAsync(respuesta, cancellationToken);
